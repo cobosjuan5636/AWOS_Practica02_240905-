@@ -22,3 +22,4 @@ esta practica esta desarollada con estructura de ramales
 |No.|Descripsion|Potenciador|Estatus|
 |---|----|----|----|
 |1.|Declaracion de variables|1|En progreso|
+|3.| Funciones | 7 | ✅ Finalizada |
