@@ -21,5 +21,6 @@ esta practica esta desarollada con estructura de ramales
 
 |No.|Descripsion|Potenciador|Estatus|
 |---|----|----|----|
-|1.|Declaracion de variables|1|✅ Finalizada|
-|2.| Tipos de Datos| 7 | ✅ Finalizada |
+|1.| Funciones | 7 | ✅ Finalizada |
+|2.|Declaracion de variables|1|✅ Finalizada|
+|3.| Tipos de Datos| 7 | ✅ Finalizada |
