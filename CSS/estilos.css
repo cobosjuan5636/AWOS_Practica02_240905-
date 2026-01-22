@@ -1,0 +1,159 @@
+/* 1. IMPORTACIÓN DE TODAS LAS FUENTES */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Roboto+Condensed:wght@700&display=swap');
+
+:root {
+    --p5-red: #d31212;
+    --p5-black: #000000;
+    --p5-white: #ffffff;
+    --transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. ESTRUCTURA Y FONDO DE EDIFICIOS */
+body {
+    background-color: var(--p5-black);
+    background-image: radial-gradient(circle, #222 1.5px, transparent 1.5px);
+    background-size: 25px 25px;
+    font-family: 'Roboto Condensed', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.bjarke.it/assets/img/p5/49617442151_d224a2efaa_o.gif'); 
+    background-size: cover;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    filter: contrast(160%) brightness(70%); 
+    opacity: 0.85; 
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Cinta roja diagonal del Pause Menu */
+body::after {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 250px;
+    background: var(--p5-red);
+    top: 40%;
+    left: -50%;
+    transform: rotate(-12deg);
+    z-index: -1;
+    opacity: 0.9;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+}
+
+/* 3. CONTENEDOR CENTRAL INCLINADO */
+body > header {
+    background-color: transparent; 
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: rotate(-5deg); 
+    z-index: 10;
+}
+
+/* 4. TÍTULO ESTILO 'COMMAND' / PERMANENT MARKER */
+h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 6rem;
+    color: var(--p5-white);
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px var(--p5-black);
+    text-shadow: 8px 8px 0px var(--p5-black);
+    background-color: var(--p5-black);
+    padding: 0 50px;
+    border: 4px solid var(--p5-white);
+    transform: rotate(2deg) skewX(-15deg);
+    margin-bottom: 30px;
+    clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+}
+
+/* 5. LISTONES CON ESTILO RANSOM NOTE */
+p {
+    width: 130%; 
+    margin-bottom: 10px;
+    font-family: 'Anton', sans-serif;
+    font-size: 2.2rem;
+    color: var(--p5-white);
+    background: var(--p5-black);
+    padding: 10px 100px;
+    transition: var(--transition);
+    cursor: pointer;
+    
+    /* Corte agresivo irregular */
+    clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Alternancia de posición y color */
+p:nth-of-type(odd) {
+    transform: translateX(-50px) rotate(1deg);
+}
+
+p:nth-of-type(even) {
+    transform: translateX(50px) rotate(-1.5deg);
+    background: var(--p5-white);
+    color: var(--p5-black);
+    clip-path: polygon(0% 0%, 92% 0%, 100% 100%, 8% 100%);
+}
+
+/* 6. ETIQUETAS STRONG (RECUADROS ROJOS DENTRO) */
+strong {
+    font-family: 'Anton', sans-serif;
+    background-color: var(--p5-red);
+    color: var(--p5-white);
+    padding: 2px 20px;
+    margin-right: 20px;
+    display: inline-block;
+    transform: skewX(-20deg);
+    border: 2px solid var(--p5-white);
+}
+
+/* 7. HOVER DINÁMICO (SALTO DE SELECCIÓN) */
+p:hover {
+    background-color: var(--p5-red) !important;
+    color: var(--p5-white) !important;
+    /* Al pasar el mouse, el listón se endereza y salta hacia adelante */
+    transform: scale(1.1) translateX(0) rotate(0deg) !important;
+    z-index: 100;
+    box-shadow: 0 0 40px rgba(211, 18, 18, 0.8);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+p:hover strong {
+    background-color: var(--p5-black);
+    border-color: var(--p5-red);
+}
+
+/* 8. ANIMACIÓN DE ENTRADA */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-300px); }
+    to { opacity: 1; }
+}
+
+p {
+    animation: slideIn 0.4s ease-out forwards;
+}
